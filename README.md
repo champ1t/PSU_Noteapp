@@ -16,7 +16,7 @@
 blob:https://www.facebook.com/07a3c9b3-d0bb-4377-b1cd-596dc243225c<img width="2048" height="1330" alt="image" src="https://github.com/user-attachments/assets/e231981c-4356-4b87-bc31-789945cab0bb" />
 
 
-3. การสร้างและแก้ไขโน้ต
+2. การสร้างและแก้ไขโน้ต
 
 blob:https://www.facebook.com/62ace405-f676-422d-b40c-eee01f2b9c2a<img width="2048" height="1291" alt="image" src="https://github.com/user-attachments/assets/2d20df7b-4705-49c8-9107-6782737d509b" />
 
@@ -24,7 +24,7 @@ blob:https://www.facebook.com/7de0df07-ff19-4371-ad02-c9d81b8ce5ee<img width="20
 
 
 
-4. การจัดการรายการโน้ต
+3. การจัดการรายการโน้ต
 
 blob:https://www.facebook.com/e7f6faef-428c-4dfd-9ff6-ecf9030ed825<img width="2048" height="1330" alt="image" src="https://github.com/user-attachments/assets/7f0a03ea-883a-4f72-9117-8354995f75d1" />
 
