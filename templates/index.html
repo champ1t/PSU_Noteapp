@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}All Notes{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>{% if title %}{{ title }}{% else %}All Notes{% endif %}</h1>
+        <div>
+            <a href="{{ url_for('notes_create') }}" class="btn btn-success me-2">
+                <i class="bi bi-plus-lg"></i> New Note
+            </a>
+            <a href="{{ url_for('tags_list') }}" class="btn btn-outline-primary">
+                <i class="bi bi-tags"></i> Manage Tags
+            </a>
+        </div>
+    </div>
+
+    {% if notes %}
+    <div class="row">
+        {% for note in notes %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 note-card {% if note.is_pinned %}pinned-note{% endif %}">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h5 class="card-title">{{ note.title }}</h5>
+                        {% if note.is_pinned %}
+                        <span class="badge bg-warning text-dark">
+                            <i class="bi bi-pin-angle"></i> Pinned
+                        </span>
+                        {% endif %}
+                    </div>
+                    
+                    <p class="card-text text-muted">{{ note.content|truncate(150) }}</p>
+                    
+                    <div class="tag-cloud mb-3">
+                        {% for tag in note.tags %}
+                        <a href="{{ url_for('notes_by_tag', tag_id=tag.id) }}" 
+                           class="badge bg-primary text-decoration-none tag-badge">
+                            {{ tag.name }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted">
+                            {{ note.updated_at.strftime('%Y-%m-%d %H:%M') }}
+                        </small>
+                        <div>
+                            <a href="{{ url_for('note_detail', note_id=note.id) }}" 
+                               class="btn btn-sm btn-outline-info me-1">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                            <a href="{{ url_for('note_edit', note_id=note.id) }}" 
+                               class="btn btn-sm btn-outline-primary me-1">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                            <form method="POST" action="{{ url_for('note_delete', note_id=note.id) }}" 
+                                  style="display:inline;">
+                                <button type="submit" class="btn btn-sm btn-outline-danger"
+                                        onclick="return confirm('Delete this note?')">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info text-center">
+        <h4 class="alert-heading">No Notes Found</h4>
+        <p>Create your first note by clicking the "New Note" button above</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

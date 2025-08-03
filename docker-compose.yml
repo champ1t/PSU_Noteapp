@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: yourusername
+      POSTGRES_PASSWORD: yourpassword
+      POSTGRES_DB: psunote
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    command: python noteapp.py
+    volumes:
+      - .:/code
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
