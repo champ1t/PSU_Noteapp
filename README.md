@@ -43,8 +43,51 @@ blob:https://www.facebook.com/e5d0e2c1-b9de-4390-963a-54b6b33ec014<img width="20
 
 ### 1. ติดตั้ง dependencies
 ```bash
+# สร้างและเปิดใช้งาน virtual environment
 python3 -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt 
+source venv/bin/activate  # Linux/macOS
+.\venv\Scripts\activate  # Windows
+
+# ติดตั้ง packages ที่จำเป็น
+pip install -r requirements.txt
+```
+
+### 2. ตั้งค่าฐานข้อมูล
+ติดตั้ง PostgreSQL และ pgAdmin
+สร้างฐานข้อมูลใหม่
+แก้ไข connection string ใน psunote/noteapp.py
+
+
+### 3. รันแอปพลิเคชัน
+```bash
+export FLASK_APP=psunote/noteapp.py
+flask run
+```
+
+
+หรือ
+```bash
+python psunote/noteapp.py
+```
+
+#### 4. เปิดใช้งานแอป
+เปิดเบราว์เซอร์ไปที่: http://localhost:5000
+
+
+### โครงสร้างโปรเจกต์
+
+<img width="242" height="288" alt="image" src="https://github.com/user-attachments/assets/16d09628-7a99-4a1b-8eda-9428d61e87dc" />
+
+
+
+### ปัญหาที่พบ
+#### ปัญหาแท็ก: ห้ามกำหนดค่า note.tags เป็น string โดยตรง ให้ใช้ append() หรือเชื่อมความสัมพันธ์ผ่าน SQLAlchemy
+
+#### ปัญหาเชื่อมต่อฐานข้อมูล: ตรวจสอบว่า connection string ถูกต้องและฐานข้อมูลทำงาน
+
+
+
+
+
 
 
